@@ -21,7 +21,7 @@
       <header class="main-header">
         <div class="brand-wrap">
           <div class="brand-mark">
-            <img src="/WhatsApp Image 2026-10-15 at 4.25.59 PM.jpeg" alt="">
+            <img src="WhatsApp Image 2026-10-15 at 4.25.59 PM.jpeg" alt="">
           </div>
           <div class="brand-block">
             <div class="brand-name">ARMAN HOSSEN</div>
@@ -36,7 +36,7 @@
           <a href="#skills">Skills</a>
         </nav>
 
-        <button class="primary-btn header-cta">Get in Touch</button>
+        <a class="primary-btn header-cta" href="#contact">Get in Touch</a>
       </header>
 
       <main>
@@ -112,57 +112,57 @@
           <div class="section-header row">
             <div>
               <p class="section-kicker">SHOWCASE</p>
-              <h2>Featured Portfolio Works</h2>
+              <h2>Selected Work</h2>
+              <p class="portfolio-intro">A selection of design and precision fabrication projects.</p>
             </div>
 
             <div class="filter-tabs" aria-label="Project filters">
               <button class="filter-btn active" data-filter="all">All Projects</button>
+              <button class="filter-btn" data-filter="featured">Featured</button>
               <button class="filter-btn" data-filter="graphic">Graphic Design</button>
               <button class="filter-btn" data-filter="laser">Laser Work</button>
             </div>
           </div>
 
-          <div class="portfolio-grid">
-            <article class="project-card" data-category="laser">
-              <div class="project-image image-one"></div>
+          <p class="form-status portfolio-status" id="portfolioStatus" role="status" aria-live="polite"></p>
+          <div class="portfolio-grid" id="projectGrid">
+            <article class="project-card" data-category="laser" data-featured="true">
+              <div class="project-image image-one"><span class="featured-badge">Featured</span></div>
               <div class="project-body">
                 <div class="project-meta">Laser Cutting</div>
                 <h3>Precision Footwear Pattern Cut</h3>
                 <p>CO2 laser machine optimization for synthetic leather cutting and pattern engraving.</p>
                 <div class="project-footer">
                   <span>CO2 Laser • Vector AI</span>
-                  <button>Details</button>
                 </div>
               </div>
             </article>
 
-            <article class="project-card" data-category="graphic">
-              <div class="project-image image-two"></div>
+            <article class="project-card" data-category="graphic" data-featured="true">
+              <div class="project-image image-two"><span class="featured-badge">Featured</span></div>
               <div class="project-body">
                 <div class="project-meta">Branding</div>
                 <h3>Footwear Artwork &amp; Vector Lineart</h3>
                 <p>Detailed vector illustration and graphic design crafted for product branding and promotion.</p>
                 <div class="project-footer">
                   <span>Adobe Illustrator</span>
-                  <button>Details</button>
                 </div>
               </div>
             </article>
 
-            <article class="project-card" data-category="graphic">
+            <article class="project-card" data-category="graphic" data-featured="false">
               <div class="project-image image-four"></div>
               <div class="project-body">
                 <div class="project-meta">Branding</div>
                 <h3>Custom Acrylic LED Signboard</h3>
                 <p>High-precision signage and acrylic fabrication designed for modern retail and branded spaces.</p>
                 <div class="project-footer">
-                  <span> Acrylic • Branding</span>
-                  <button>Details</button>
+                  <span>Acrylic • Branding</span>
                 </div>
               </div>
             </article>
 
-            <article class="project-card" data-category="laser">
+            <article class="project-card" data-category="laser" data-featured="false">
               <div class="project-image image-five"></div>
               <div class="project-body">
                 <div class="project-meta">Laser Branding</div>
@@ -170,7 +170,6 @@
                 <p>Custom monogram design and precision laser-cut branding for premium packaging and product finishing.</p>
                 <div class="project-footer">
                   <span>Logo Design • Laser</span>
-                  <button>Details</button>
                 </div>
               </div>
             </article>
@@ -217,7 +216,7 @@
             <div class="contact-list">
               <div class="contact-item">
                 <span class="contact-icon">✉</span>
-                <span>mdarmanhosseny2003@gmail.com</span>
+                <a href="mailto:mdarmanhosseny2003@gmail.com">mdarmanhosseny2003@gmail.com</a>
               </div>
               <div class="contact-item">
                 <span class="contact-icon">⌖</span>
@@ -226,28 +225,29 @@
             </div>
           </div>
 
-          <form class="contact-form">
+          <form class="contact-form" id="contactForm">
             <div class="field-row">
               <label>
                 Your Name
-                <input type="text" value="John Doe" />
+                <input type="text" name="name" autocomplete="name" maxlength="120" required />
               </label>
               <label>
                 Email Address
-                <input type="email" value="john@example.com" />
+                <input type="email" name="email" autocomplete="email" maxlength="254" required />
               </label>
             </div>
 
             <label>
               Project Type / Subject
-              <input type="text" value="Graphic Design / Footwear Design" />
+              <input type="text" name="subject" maxlength="180" required />
             </label>
 
             <label>
               Message
-              <textarea rows="5">Tell me about your project details...</textarea>
+              <textarea name="message" rows="5" maxlength="10000" required></textarea>
             </label>
 
+            <p class="form-status" id="contactStatus" role="status" aria-live="polite"></p>
             <button class="primary-btn send-btn" type="submit">Send Message</button>
           </form>
         </section>
@@ -255,10 +255,16 @@
 
       <footer class="site-footer">
         <p>© 2026 Arman Hossen. All rights reserved.</p>
-        <a href="#top">Back to Top ↑</a>
+        <div class="footer-links">
+          <a href="admin.html">Admin</a>
+          <a href="#top">Back to Top ↑</a>
+        </div>
       </footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-client.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

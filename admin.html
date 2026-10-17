@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Admin | Arman Hossen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <div class="admin-shell">
+      <header class="admin-header">
+        <a class="admin-brand" href="index.html">
+          <span class="admin-brand-mark">A</span>
+          <span><strong>ARMAN HOSSEN</strong><small>PORTFOLIO ADMIN</small></span>
+        </a>
+        <a class="admin-back-link" href="index.html">← View portfolio</a>
+      </header>
+
+      <main class="admin-main">
+        <section class="admin-login" id="loginPanel">
+          <p class="section-kicker">PRIVATE WORKSPACE</p>
+          <h1>Welcome back</h1>
+          <p class="admin-subtitle">Sign in to manage selected work and read contact messages.</p>
+          <form id="loginForm">
+            <label>Email address<input type="email" name="email" autocomplete="username" required /></label>
+            <label>Password<input type="password" name="password" autocomplete="current-password" required /></label>
+            <p class="admin-status" id="loginStatus" role="status" aria-live="polite"></p>
+            <button class="primary-btn admin-submit" type="submit">Sign in</button>
+          </form>
+          <p class="setup-hint">Sign in with the account added to the Supabase admin allowlist. For first-time setup, follow the steps in README.md.</p>
+        </section>
+
+        <section id="dashboard" hidden>
+          <div class="dashboard-heading">
+            <div>
+              <p class="section-kicker">YOUR WORKSPACE</p>
+              <h1>Portfolio dashboard</h1>
+            </div>
+            <button class="secondary-btn admin-signout" id="signOutButton" type="button">Sign out</button>
+          </div>
+
+          <p class="admin-status dashboard-status" id="adminStatus" role="status" aria-live="polite"></p>
+
+          <div class="dashboard-stats" aria-label="Portfolio overview">
+            <article class="dashboard-stat"><span>Projects</span><strong id="projectCount">0</strong></article>
+            <article class="dashboard-stat"><span>Published</span><strong id="publishedCount">0</strong></article>
+            <article class="dashboard-stat"><span>Unread messages</span><strong id="unreadCount">0</strong></article>
+          </div>
+
+          <div class="admin-tabs" role="tablist" aria-label="Manage portfolio">
+            <button class="admin-tab active" id="messagesTab" type="button" role="tab" aria-selected="true" aria-controls="messagesPanel">Inbox</button>
+            <button class="admin-tab" id="projectsTab" type="button" role="tab" aria-selected="false" aria-controls="projectsPanel">My work</button>
+          </div>
+
+          <section class="admin-panel" id="messagesPanel" role="tabpanel" aria-labelledby="messagesTab">
+            <div class="panel-heading">
+              <div><p class="section-kicker">CONTACT FORM</p><h2>Your inbox</h2></div>
+              <button class="secondary-btn" id="refreshMessages" type="button">Refresh</button>
+            </div>
+            <div class="message-list" id="messageList"></div>
+          </section>
+
+          <section class="admin-panel" id="projectsPanel" role="tabpanel" aria-labelledby="projectsTab" hidden>
+            <div class="panel-heading">
+              <div><p class="section-kicker">PORTFOLIO CONTENT</p><h2>Manage your work</h2></div>
+            </div>
+            <div class="project-manager">
+              <form class="project-editor" id="projectForm">
+                <h3 id="projectFormTitle">Add a project</h3>
+                <input type="hidden" name="id" />
+                <label>Project title<input name="title" maxlength="160" required /></label>
+                <label>Category
+                  <select name="category" required>
+                    <option value="graphic">Graphic Design</option>
+                    <option value="laser">Laser Work</option>
+                  </select>
+                </label>
+                <label>Description<textarea name="description" rows="4" maxlength="1200" required></textarea></label>
+                <label>Image URL or site-relative path<input name="image_url" type="text" maxlength="2048" placeholder="img1.png" /></label>
+                <label>Tools / materials<input name="tools" maxlength="180" placeholder="Adobe Illustrator" /></label>
+                <label>Display order<input name="sort_order" type="number" min="0" step="1" value="0" /></label>
+                <label class="check-option"><input name="featured" type="checkbox" /> Mark as featured</label>
+                <label class="check-option"><input name="published" type="checkbox" checked /> Show on public portfolio</label>
+                <div class="editor-actions">
+                  <button class="primary-btn" type="submit" id="saveProjectButton">Save project</button>
+                  <button class="secondary-btn" type="button" id="cancelEditButton" hidden>Cancel edit</button>
+                </div>
+              </form>
+              <div class="project-manager-list">
+                <h3>All projects</h3>
+                <div id="projectList"></div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="supabase-client.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
