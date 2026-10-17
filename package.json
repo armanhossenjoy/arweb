@@ -1,0 +1,24 @@
+{
+  "name": "arweb",
+  "version": "1.0.0",
+  "description": "Portfolio website for Arman Hossen — graphic designer and CO2 laser specialist",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armanhossenjoy/arweb.git"
+  },
+  "keywords": ["portfolio", "graphic-design", "laser"],
+  "author": "Arman Hossen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/armanhossenjoy/arweb/issues"
+  },
+  "homepage": "https://github.com/armanhossenjoy/arweb#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0"
+  }
+}
