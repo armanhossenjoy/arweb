@@ -87,12 +87,13 @@ textarea {
 .brand-mark {
   width: 36px;
   height: 36px;
-  border-radius: 10px;
+  border-radius: 50%;
   background: linear-gradient(135deg, var(--gold), #f3d690);
   display: grid;
   place-items: center;
   color: var(--bg);
   font-weight: 900;
+  overflow: hidden;
   box-shadow: 0 8px 18px rgba(247, 199, 91, 0.35);
 }
 
@@ -563,19 +564,19 @@ main {
 }
 
 .image-one {
-  background: linear-gradient(120deg, rgba(20, 39, 69, 0.2), rgba(0, 0, 0, 0.18)), url('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+  background: linear-gradient(120deg, rgba(20, 39, 69, 0.2), rgba(0, 0, 0, 0.18)), url('/img1.png') center/cover no-repeat;
 }
 
 .image-two {
-  background: linear-gradient(120deg, rgba(132, 18, 18, 0.38), rgba(0, 0, 0, 0.12)), url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+  background: linear-gradient(120deg, rgba(132, 18, 18, 0.38), rgba(0, 0, 0, 0.12)), url('/img2.png') center/cover no-repeat;
 }
 
 .image-four {
-  background: linear-gradient(120deg, rgba(68, 27, 13, 0.26), rgba(0, 0, 0, 0.1)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+  background: linear-gradient(120deg, rgba(68, 27, 13, 0.26), rgba(0, 0, 0, 0.1)), url('/img3.png') center/cover no-repeat;
 }
 
 .image-five {
-  background: linear-gradient(120deg, rgba(116, 83, 26, 0.25), rgba(0, 0, 0, 0.18)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+  background: linear-gradient(120deg, rgba(116, 83, 26, 0.25), rgba(0, 0, 0, 0.18)), url('/img3.jpg') center/cover no-repeat;
 }
 
 .project-body {
