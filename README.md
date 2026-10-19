@@ -33,6 +33,7 @@ Static portfolio site with a Supabase-backed admin dashboard for projects and co
 - The **Inbox** tab in the dashboard lists messages submitted through the public contact form. Mark messages read/unread, reply using the sender's email link, or delete messages.
 - The **My work** tab lets the admin add, edit, publish/unpublish, feature, reorder, and delete projects. Use a site-relative path such as `img1.png` or a public image URL.
 - Published projects appear on the portfolio. Featured projects are marked and appear first; visitors can filter to featured work.
+- The public page includes temporary stock-photo placeholders in `index.html` for the hero, portfolio, and studio cards. Replace those image URLs with your own photos when they are ready.
 - Existing projects are seeded by `supabase-setup.sql`. Seed records use fixed IDs, so the seed can be rerun without duplicating those records.
 
 Contact-form submissions are stored in the Supabase inbox; they are not automatically forwarded to Gmail or another email provider. This site does not display a personal email inbox.

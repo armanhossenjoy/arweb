@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const projectImagePlaceholders = [
+    'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=900&q=80',
+    'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
+    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80',
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80',
+    'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80',
+    'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=900&q=80'
+  ];
   const filterButtons = document.querySelectorAll('.filter-btn');
   const projectGrid = document.querySelector('#projectGrid');
   const portfolioStatus = document.querySelector('#portfolioStatus');
@@ -6,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactStatus = document.querySelector('#contactStatus');
   let currentFilter = 'all';
   const revealElements = document.querySelectorAll(
-    '.expertise, .portfolio, .skills-section, .contact, .expertise-card, .project-card, .skill-matrix'
+    '.hero-copy, .hero-visual, .about-card, .process-section, .portfolio, .blog-section, .expertise, .tools-section, .testimonial-section, .contact, .project-card'
   );
 
   const applyProjectFilter = () => {
@@ -24,12 +32,16 @@ document.addEventListener('DOMContentLoaded', () => {
   filterButtons.forEach((button) => {
     button.addEventListener('click', () => {
       currentFilter = button.dataset.filter;
-      filterButtons.forEach((btn) => btn.classList.toggle('active', btn === button));
+      filterButtons.forEach((btn) => {
+        const isActive = btn === button;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+      });
       applyProjectFilter();
     });
   });
 
-  const createProjectCard = (project) => {
+  const createProjectCard = (project, index) => {
     const card = document.createElement('article');
     card.className = 'project-card';
     card.dataset.category = project.category;
@@ -37,16 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const image = document.createElement('div');
     image.className = 'project-image';
+    const fallbackImage = projectImagePlaceholders[index % projectImagePlaceholders.length];
+    const imageElement = document.createElement('img');
+    imageElement.src = project.image_url || fallbackImage;
+    imageElement.alt = project.title;
+    imageElement.loading = 'lazy';
     if (project.image_url) {
-      const imageElement = document.createElement('img');
-      imageElement.src = project.image_url;
-      imageElement.alt = project.title;
-      imageElement.loading = 'lazy';
-      image.append(imageElement);
-    } else {
-      image.classList.add('project-image-empty');
-      image.setAttribute('aria-hidden', 'true');
+      imageElement.addEventListener('error', () => {
+        imageElement.src = fallbackImage;
+      }, { once: true });
     }
+    image.append(imageElement);
 
     const body = document.createElement('div');
     body.className = 'project-body';

@@ -6,7 +6,8 @@
 .admin-header,
 .admin-main {
   border: 1px solid var(--line);
-  background: rgba(7, 20, 31, 0.92);
+  background: #fff;
+  box-shadow: 0 12px 34px rgba(28, 35, 59, 0.06);
 }
 
 .admin-header {
@@ -30,8 +31,8 @@
   height: 42px;
   place-items: center;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--gold-2), var(--gold));
-  color: #101720;
+  background: var(--purple);
+  color: #fff;
   font-weight: 900;
 }
 
@@ -47,14 +48,15 @@
 
 .admin-brand small {
   margin-top: 4px;
-  color: var(--muted);
+  color: var(--soft);
   font-size: 0.66rem;
   letter-spacing: 0.14em;
 }
 
 .admin-back-link {
-  color: var(--gold-2);
-  font-size: 0.9rem;
+  color: var(--purple);
+  font-size: 0.82rem;
+  font-weight: 600;
 }
 
 .admin-main {
@@ -62,6 +64,7 @@
   padding: clamp(22px, 5vw, 54px);
   border-top: 0;
   border-radius: 0 0 18px 18px;
+  box-shadow: 0 18px 42px rgba(28, 35, 59, 0.045);
 }
 
 .admin-login {
@@ -103,22 +106,23 @@
 .project-editor textarea {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 0.9rem 1rem;
-  background: rgba(5, 13, 22, 0.8);
-  color: var(--text);
+  border-radius: 9px;
+  padding: 0.85rem 0.9rem;
+  background: #fff;
+  color: var(--ink);
 }
 
 #loginForm input:focus,
 .project-editor input:focus,
 .project-editor select:focus,
 .project-editor textarea:focus {
-  outline: 2px solid rgba(247, 199, 91, 0.55);
-  outline-offset: 1px;
+  outline: 3px solid rgba(146, 45, 240, 0.12);
+  border-color: var(--purple);
 }
 
 .project-editor select option {
-  background: var(--bg-2);
+  background: #fff;
+  color: var(--ink);
 }
 
 .project-editor textarea {
@@ -131,6 +135,49 @@
   padding: 0.75rem 1.1rem;
 }
 
+.admin-submit,
+.editor-actions .primary-btn,
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.admin-submit,
+.editor-actions .primary-btn {
+  background: var(--purple);
+  box-shadow: 0 7px 15px rgba(146, 45, 240, 0.17);
+  color: #fff;
+}
+
+.admin-submit:hover,
+.editor-actions .primary-btn:hover {
+  transform: translateY(-2px);
+  background: var(--purple-dark);
+  box-shadow: 0 10px 20px rgba(146, 45, 240, 0.23);
+}
+
+.secondary-btn {
+  min-height: 40px;
+  padding: 0.6rem 0.9rem;
+  border-color: #e7e4ee;
+  background: #fff;
+  color: var(--ink);
+}
+
+.secondary-btn:hover {
+  border-color: #dfc5fa;
+  background: #faf6ff;
+  color: var(--purple);
+}
+
 .setup-hint {
   margin-top: 22px;
   font-size: 0.82rem;
@@ -139,7 +186,7 @@
 .admin-status {
   min-height: 1.4em;
   margin: 10px 0;
-  color: #ffb4a9;
+  color: #c43f4e;
   font-size: 0.88rem;
   line-height: 1.5;
 }
@@ -149,7 +196,7 @@
 }
 
 .admin-status.success {
-  color: #a9e8bb;
+  color: #27875e;
 }
 
 .dashboard-heading,
@@ -175,9 +222,6 @@
 }
 
 .secondary-btn {
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.035);
-  color: var(--text);
   cursor: pointer;
 }
 
@@ -194,7 +238,8 @@
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 16px;
-  background: rgba(14, 26, 38, 0.72);
+  background: #fff;
+  box-shadow: 0 7px 18px rgba(28, 35, 59, 0.04);
 }
 
 .dashboard-stat span {
@@ -203,7 +248,7 @@
 }
 
 .dashboard-stat strong {
-  color: var(--gold-2);
+  color: var(--purple);
   font-size: 1.8rem;
 }
 
@@ -224,8 +269,9 @@
 }
 
 .admin-tab.active {
-  border-color: var(--gold);
-  color: var(--gold-2);
+  border-color: var(--purple);
+  color: var(--purple);
+  font-weight: 650;
 }
 
 .admin-panel {
@@ -251,8 +297,9 @@
 .managed-project,
 .project-editor {
   border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(14, 26, 38, 0.76);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 7px 18px rgba(28, 35, 59, 0.04);
 }
 
 .message-card {
@@ -260,8 +307,8 @@
 }
 
 .message-card.unread {
-  border-color: rgba(247, 199, 91, 0.44);
-  box-shadow: inset 3px 0 var(--gold);
+  border-color: rgba(146, 45, 240, 0.26);
+  box-shadow: inset 3px 0 var(--purple), 0 7px 18px rgba(28, 35, 59, 0.04);
 }
 
 .message-topline strong {
@@ -276,7 +323,7 @@
 .message-email {
   display: inline-block;
   margin-top: 7px;
-  color: var(--gold-2);
+  color: var(--purple-dark);
   overflow-wrap: anywhere;
 }
 
@@ -309,7 +356,7 @@
   padding: 0.45rem 0;
   border: 0;
   background: transparent;
-  color: var(--gold-2);
+  color: var(--purple-dark);
   cursor: pointer;
   font: inherit;
   font-size: 0.86rem;
@@ -345,7 +392,7 @@
 .project-editor .check-option input {
   width: 18px;
   height: 18px;
-  accent-color: var(--gold);
+  accent-color: var(--purple);
 }
 
 .editor-actions .secondary-btn {
@@ -358,6 +405,32 @@
   justify-content: space-between;
   gap: 14px;
   padding: 16px;
+}
+
+.managed-project-main {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 13px;
+}
+
+.managed-project-thumb {
+  width: 66px;
+  height: 56px;
+  flex: 0 0 66px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #e7dcfb, #cfdbec);
+  object-fit: cover;
+}
+
+.managed-project-details {
+  min-width: 0;
+}
+
+.managed-project-details strong {
+  display: block;
+  overflow-wrap: anywhere;
 }
 
 .managed-project strong {
@@ -464,5 +537,9 @@
   .managed-project {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .managed-project-main {
+    width: 100%;
   }
 }

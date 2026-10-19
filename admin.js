@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const projectImagePlaceholders = [
+    'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=240&q=75',
+    'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=240&q=75',
+    'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=240&q=75',
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=240&q=75',
+    'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=240&q=75',
+    'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=240&q=75'
+  ];
   const loginPanel = document.querySelector('#loginPanel');
   const dashboard = document.querySelector('#dashboard');
   const loginForm = document.querySelector('#loginForm');
@@ -52,10 +60,23 @@ document.addEventListener('DOMContentLoaded', () => {
       projectList.append(empty);
     }
 
-    projects.forEach((project) => {
+    projects.forEach((project, index) => {
       const item = document.createElement('article');
       item.className = 'managed-project';
+      const projectMain = document.createElement('div');
+      projectMain.className = 'managed-project-main';
+      const image = document.createElement('img');
+      image.className = 'managed-project-thumb';
+      image.src = project.image_url || projectImagePlaceholders[index % projectImagePlaceholders.length];
+      image.alt = '';
+      image.loading = 'lazy';
+      if (project.image_url) {
+        image.addEventListener('error', () => {
+          image.src = projectImagePlaceholders[index % projectImagePlaceholders.length];
+        }, { once: true });
+      }
       const details = document.createElement('div');
+      details.className = 'managed-project-details';
       const title = document.createElement('strong');
       title.textContent = project.title;
       const meta = document.createElement('p');
@@ -65,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         project.featured ? 'Featured' : ''
       ].filter(Boolean).join(' · ');
       details.append(title, meta);
+      projectMain.append(image, details);
 
       const actions = document.createElement('div');
       actions.className = 'item-actions';
@@ -72,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         makeButton('Edit', 'text-button', () => editProject(project)),
         makeButton('Delete', 'text-button danger-button', () => deleteProject(project))
       );
-      item.append(details, actions);
+      item.append(projectMain, actions);
       projectList.append(item);
     });
     updateStats();
